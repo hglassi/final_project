@@ -15,6 +15,17 @@ gtsummary::tbl_summary( survivalists,
 											 	day_linked_up ~ "Day Linked Up"))
 
 
+linear_model <- lm (days_lasted ~ gender + age + season + country, data = survivalists)
 
+tbl_regression(
+	linear_model,
+	intercept = TRUE,
+	label = list(
+		gender ~ "Gender",
+		age ~ "Age",
+		season ~ "Season",
+		country ~ "Country"))
+
+hist(survivalists$season)
 
 
