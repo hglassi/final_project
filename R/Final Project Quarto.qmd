@@ -7,9 +7,13 @@ editor: visual
 
 This data set is based on the TV show "Alone" on the History Channel. It includes information on those who participated as survivalists on the show. It includes information on their age, the season they participated, how many days they lasted, why they tapped out (if applicable), and more! The data set was retrieved from R for Data Science Online Learning Community, specifically the Tidy Tuesday project.
 
+`@Table_1` is a table of information from the data set.
+
+`@Histogram` shows a histogram of histogram how many survivialists were in each season.
+
 ```{r}
 #| echo: FALSE
-#| label: Table 1 
+#| label: Table_1 
 #| tbl-cap: "Descriptive Table of the Alone Dataset"
 
 survivalists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-24/survivalists.csv')
