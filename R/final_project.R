@@ -30,4 +30,3 @@ hist(survivalists$season)
 alone_range <- function (x) {max(x)-min(x)}
  alone_range(survivalists$age)
  alone_range(survivalists$days_lasted)
-kiju
