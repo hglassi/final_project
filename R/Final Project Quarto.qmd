@@ -1,0 +1,53 @@
+---
+title: "Final Project Quarto"
+author: "Hannah Glassie"
+format: html
+editor: visual
+---
+
+This data set is based on the TV show "Alone" on the History Channel. It includes information on those who participated as survivalists on the show. It includes information on their age, the season they participated, how many days they lasted, why they tapped out (if applicable), and more! The data set was retrieved from R for Data Science Online Learning Community, specifically the Tidy Tuesday project.
+
+```{r}
+#| echo: FALSE
+#| label: Table 1 
+#| tbl-cap: "Descriptive Table of the Alone Dataset"
+
+survivalists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-24/survivalists.csv')
+ 
+gtsummary::tbl_summary(survivalists,
+											 by = gender,
+											 include = c(season, age,
+											 state, country, result, days_lasted,
+											 medically_evacuated, reason_tapped_out,
+											 reason_category, team, day_linked_up,
+											 profession),
+											 label = list(
+											 	days_lasted ~ "Days Lasted",
+											 	medically_evacuated ~ "Medically Evacuated",
+											 	reason_tapped_out ~ "Reason for Tapping Out",
+											 	reason_category ~ "Reason Category",
+											 	day_linked_up ~ "Day Linked Up"))
+```
+
+```{r}
+#| echo: FALSE
+#| label: Regression
+#| fig-cap: "Regression of Days Lasted by Gender, Age, Season, and Country" 
+
+linear_model <- lm (days_lasted ~ gender + age + season, data = survivalists)
+
+regression <- gtsummary::tbl_regression( linear_model, intercept = TRUE, label = list( gender ~ "Gender", age ~ "Age", season ~ "Season"), )
+
+regression
+```
+
+*The average increase in days lasted is `r gtsummary::inline_text(regression, variable = age)` per one year increase in age.*
+
+**The average age is `r mean(survivalists$age)` years.**
+
+```{r}
+#| echo: FALSE
+#| label: Histogram
+#| fig-cap: "Histogram of Seasons in Alone Dataset"
+hist(survivalists$season)
+```
