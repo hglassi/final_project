@@ -1,6 +1,8 @@
 survivalists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-24/survivalists.csv')
 
-gtsummary::tbl_summary( survivalists,
+install.packages("here", "gtsummary")
+
+gtsummary::tbl_summary(survivalists,
 											 by = gender,
 											 include = c(season, age,
 											 state, country, result, days_lasted,
@@ -25,8 +27,19 @@ tbl_regression(
 		age ~ "Age",
 		season ~ "Season"))
 
+
+
+
+install.packages("ggplot2")
+library("ggplot2")
+
 hist(survivalists$season)
+
 
 alone_range <- function (x) {max(x)-min(x)}
  alone_range(survivalists$age)
  alone_range(survivalists$days_lasted)
+
+
+
+
