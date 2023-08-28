@@ -2,8 +2,8 @@ survivalists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascien
 
 gtsummary::tbl_summary( survivalists,
 											 by = gender,
-											 include = c(season, name, age,
-										   city, state, country, result, days_lasted,
+											 include = c(season, age,
+											 state, country, result, days_lasted,
 											 medically_evacuated, reason_tapped_out,
 											 reason_category, team, day_linked_up,
 											 profession, url),
@@ -15,7 +15,7 @@ gtsummary::tbl_summary( survivalists,
 											 	day_linked_up ~ "Day Linked Up"))
 
 
-linear_model <- lm (days_lasted ~ gender + age + season + country, data = survivalists)
+linear_model <- lm (days_lasted ~ gender + age + season, data = survivalists)
 
 tbl_regression(
 	linear_model,
@@ -23,11 +23,11 @@ tbl_regression(
 	label = list(
 		gender ~ "Gender",
 		age ~ "Age",
-		season ~ "Season",
-		country ~ "Country"))
+		season ~ "Season"))
 
 hist(survivalists$season)
 
 alone_range <- function (x) {max(x)-min(x)}
  alone_range(survivalists$age)
  alone_range(survivalists$days_lasted)
+kiju
