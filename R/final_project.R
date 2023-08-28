@@ -6,7 +6,7 @@ gtsummary::tbl_summary( survivalists,
 											 state, country, result, days_lasted,
 											 medically_evacuated, reason_tapped_out,
 											 reason_category, team, day_linked_up,
-											 profession, url),
+											 profession),
 											 label = list(
 											 	days_lasted ~ "Days Lasted",
 											 	medically_evacuated ~ "Medically Evacuated",
