@@ -28,12 +28,13 @@ tbl_regression(
 		season ~ "Season"))
 
 
-
+hist(survivalists$season)
 
 install.packages("ggplot2")
 library("ggplot2")
 
-hist(survivalists$season)
+ggsave(filename = here::here("seasonshistogram.png"),
+			 plot = , device = "png")
 
 alone_range <- function (x) {max(x)-min(x)}
  alone_range(survivalists$age)
